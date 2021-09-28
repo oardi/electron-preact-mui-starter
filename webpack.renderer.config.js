@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const rules = require('./webpack.rules');
 const plugins = require('./webpack.plugins');
 const path = require('path');
@@ -18,13 +19,11 @@ rules.push({
 });
 
 plugins.push(
+	new webpack.HotModuleReplacementPlugin(),
 	new PreactRefreshPlugin()
 );
 
 module.exports = {
-	devServer: {
-		hot: true
-	},
 	module: {
 		rules,
 	},
